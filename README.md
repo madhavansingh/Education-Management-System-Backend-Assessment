@@ -258,6 +258,8 @@ curl -X GET http://localhost:5007/api/v1/students/<STUDENT_ID> \
 ```
 
 ### 5. Update Student
+> **Note:** `PUT /api/v1/students/:id` performs a full student update using the existing `student_add_update` procedure. Send the complete student payload rather than only changed fields. Partial-update semantics are not implemented by this endpoint.
+
 ```bash
 curl -X PUT http://localhost:5007/api/v1/students/<STUDENT_ID> \
   -H "Content-Type: application/json" \
@@ -265,8 +267,21 @@ curl -X PUT http://localhost:5007/api/v1/students/<STUDENT_ID> \
   -H "x-csrf-token: <CSRF_TOKEN>" \
   -d '{
     "name": "Jane Doe Updated",
+    "email": "jane.doe@school.com",
+    "gender": "Female",
+    "dob": "2008-04-12",
+    "phone": "9876543210",
+    "class": "Class 10",
     "section": "B",
-    "roll": 102
+    "roll": 102,
+    "admissionDate": "2024-01-15",
+    "currentAddress": "456 Oak Avenue",
+    "permanentAddress": "123 Academic Way",
+    "fatherName": "John Doe",
+    "guardianName": "John Doe",
+    "guardianPhone": "9876543211",
+    "relationOfGuardian": "Father",
+    "systemAccess": true
   }'
 ```
 
